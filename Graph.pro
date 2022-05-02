@@ -8,14 +8,21 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# Use Precompiled headers (PCH)
+PRECOMPILED_HEADER  = pch.h
+
 SOURCES += \
+    Actions/AddGraphs/addgraphdialog.cpp \
     main.cpp \
     mainwindow/mainwindow.cpp
 
 HEADERS += \
-    mainwindow/mainwindow.h
+    Actions/AddGraphs/addgraphdialog.h \
+    mainwindow/mainwindow.h \
+    pch.h
 
 FORMS += \
+    Actions/AddGraphs/addgraphdialog.ui \
     mainwindow/mainwindow.ui
 
 # Default rules for deployment.
@@ -24,4 +31,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resource/icons.qrc
+    Resources/icons.qrc
