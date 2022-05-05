@@ -1,7 +1,12 @@
 
+#include "map.h"
 #include <mainwindow/mainwindow.h>
 
 #include <QApplication>
+
+#include "map.h"
+#include <iostream>
+
 
 int main(int argc, char *argv[])
 {
@@ -9,4 +14,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     return a.exec();
+    addMap();
+
 }
