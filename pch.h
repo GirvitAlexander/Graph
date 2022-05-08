@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QCheckBox>
 #include <QObject>
+#include <QValidator>
 #include <QWidget>
 
 #endif // PCH_H

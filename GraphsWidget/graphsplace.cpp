@@ -1,4 +1,5 @@
 #include <pch.h>
+#include <QLabel>
 #include "graphsplace.h"
 #include "ui_graphsplace.h"
 
@@ -8,7 +9,7 @@ GraphsPlace::GraphsPlace(QWidget *parent) :
 {
   ui->setupUi(this);
   updateCenter();
-  scale = 10;
+  scale = 20;
 }
 
 GraphsPlace::~GraphsPlace()
@@ -38,6 +39,7 @@ void GraphsPlace::drawGrid()
     if (x_0 - i * scale < 0)
       break;
 
+    //paint.drawText(x_0 - i * scale, y_0, QString("%1").arg(-i));
     paint.drawLine(x_0 - i * scale, 0, x_0  - i * scale, height());
   }
 
@@ -46,6 +48,8 @@ void GraphsPlace::drawGrid()
     if (x_0 + i * scale > width())
       break;
 
+
+    //paint.drawText(x_0 + i * scale, y_0, QString("%1").arg(i));
     paint.drawLine(x_0 + i * scale, 0, x_0  + i * scale, height());
   }
 
@@ -54,6 +58,7 @@ void GraphsPlace::drawGrid()
     if (y_0 - i * scale < 0)
       break;
 
+    //paint.drawText(x_0, y_0 - i * scale, QString("%1").arg(-i));
     paint.drawLine(0, y_0  - i * scale, width(), y_0  - i * scale);
   }
 
@@ -62,6 +67,8 @@ void GraphsPlace::drawGrid()
     if (y_0 + i * scale > height())
       break;
 
+
+    //paint.drawText(x_0, y_0 + i * scale, QString("%1").arg(i));
     paint.drawLine(0, y_0  + i * scale, width(), y_0  + i * scale);
   }
 
