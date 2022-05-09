@@ -29,8 +29,10 @@ MainWindow::~MainWindow()
 void MainWindow::signAxesAction(bool checked)
 {
   signAxesDialog dialog(this);
-  dialog.exec();
-  ui->abs->setText(dialog.getAbs());
-  ui->ord->setText(dialog.getOrd());
+  if (dialog.exec() == QDialog::Accepted)
+  {
+    ui->abs->setText(dialog.getAbs());
+    ui->ord->setText(dialog.getOrd());
+  }
 }
 

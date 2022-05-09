@@ -12,11 +12,13 @@ signAxesDialog::signAxesDialog(QWidget *parent) :
 
 void signAxesDialog::accept()
 {
-  if (ui->absLineEdit->text().isEmpty() && ui->ordLineEdit->text().isEmpty())
+  if (ui->absLineEdit->text().isEmpty() || ui->ordLineEdit->text().isEmpty())
     return;
+
   abs = ui->absLineEdit->text();
   ord = ui->ordLineEdit->text();
-  close();
+
+  QDialog::accept();
 }
 
 QString signAxesDialog::getAbs()
