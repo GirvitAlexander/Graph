@@ -4,22 +4,22 @@
 #include <QDialog>
 
 namespace Ui {
-class AddGraphDialog;
+  class AddGraphDialog;
 }
 
 class AddGraphDialog : public QDialog
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit AddGraphDialog(QWidget *parent = nullptr);
-    ~AddGraphDialog();
-    QString getNum();
-    QMap<float, float> genMap();
+  explicit AddGraphDialog(QWidget *parent = nullptr);
+  ~AddGraphDialog();
+  QString getNum();
+  QMap<float, float> genMap();
 
 private:
-    Ui::AddGraphDialog *ui;
-    QString num;
+  Ui::AddGraphDialog *ui;
+  QString num;
 
 protected:
   void accept();
