@@ -14,9 +14,15 @@ class AddGraphDialog : public QDialog
 public:
     explicit AddGraphDialog(QWidget *parent = nullptr);
     ~AddGraphDialog();
+    QString getNum();
+    QMap<float, float> genMap();
 
 private:
     Ui::AddGraphDialog *ui;
+    QString num;
+
+protected:
+  void accept();
 };
 
 #endif // ADDGRAPHDIALOG_H
