@@ -16,6 +16,8 @@ public:
   ~AddGraphDialog();
   QString getNum();
   QMap<float, float> genMap();
+  QString getKey();
+  QString getValue();
 
 private:
   Ui::AddGraphDialog *ui;

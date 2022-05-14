@@ -20,6 +20,16 @@ MainWindow::~MainWindow()
 void MainWindow::AddGraphAction()
 {
   AddGraphDialog dialog(this);
+  QMap<float, float>::const_iterator i = dialog.genMap().begin();
+  QString str;
   if (dialog.exec() == QDialog::Accepted)
-    ui->testNum->setText(dialog.getNum());
+    {
+      ui->testNum->setText(dialog.getNum());
+      while (i != dialog.genMap().end())
+        {
+          str = QString::number(i.key()) + ": " + QString::number(i.value()) + " ";
+          ui->textBrowser->setText(str);
+          ++i;
+        }
+    }
 }
