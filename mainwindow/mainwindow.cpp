@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+  ui->testNum->setText("Здесь будут точки");
   connect(ui->newGraphs, &QPushButton::clicked, this, &MainWindow::AddGraphAction);
 }
 
@@ -20,15 +21,16 @@ MainWindow::~MainWindow()
 void MainWindow::AddGraphAction()
 {
   AddGraphDialog dialog(this);
-  QMap<float, float>::const_iterator i = dialog.genMap().begin();
   QString str;
   if (dialog.exec() == QDialog::Accepted)
     {
-      ui->testNum->setText(dialog.getNum());
-      while (i != dialog.genMap().end())
+      ui->testNum->setText("Точек: " + QString::number(dialog.getNum()));
+      auto a = dialog.genMap();
+      auto i = a.begin();
+      while (i != a.end())
         {
-          str = QString::number(i.key()) + ": " + QString::number(i.value()) + " ";
-          ui->textBrowser->setText(str);
+          str = QString::number(i.key()) + ": " + QString::number(i.value()) + "\n";
+          ui->textBrowser->append(str);
           ++i;
         }
     }

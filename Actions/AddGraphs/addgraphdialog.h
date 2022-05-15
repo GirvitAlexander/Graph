@@ -2,6 +2,7 @@
 #define ADDGRAPHDIALOG_H
 
 #include <QDialog>
+#include <QIntValidator>
 
 namespace Ui {
   class AddGraphDialog;
@@ -14,14 +15,15 @@ class AddGraphDialog : public QDialog
 public:
   explicit AddGraphDialog(QWidget *parent = nullptr);
   ~AddGraphDialog();
-  QString getNum();
+  int getNum();
   QMap<float, float> genMap();
   QString getKey();
   QString getValue();
 
 private:
   Ui::AddGraphDialog *ui;
-  QString num;
+  int num;
+  QIntValidator val;
 
 protected:
   void accept();
