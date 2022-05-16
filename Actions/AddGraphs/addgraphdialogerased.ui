@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddGraphDialogErased</class>
+ <widget class="QDialog" name="AddGraphDialogErased">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>558</width>
+    <height>372</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="19" column="17">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="17" column="16">
+    <widget class="QLineEdit" name="ForY"/>
+   </item>
+   <item row="17" column="9">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Абцисса :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="17" column="15">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Ордината :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="17" column="12">
+    <widget class="QLineEdit" name="ForX"/>
+   </item>
+   <item row="18" column="17">
+    <widget class="QPushButton" name="addPoint">
+     <property name="text">
+      <string>Добавить точку</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>ForX</tabstop>
+  <tabstop>ForY</tabstop>
+  <tabstop>addPoint</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>AddGraphDialogErased</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>AddGraphDialogErased</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>addPoint</sender>
+   <signal>clicked()</signal>
+   <receiver>AddGraphDialogErased</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>464</x>
+     <y>186</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>185</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

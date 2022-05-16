@@ -1,5 +1,6 @@
 #include <pch.h>
 #include "Actions/AddGraphs/addgraphdialog.h"
+#include "Actions/AddGraphs/addgraphdialogerased.h"
 #include "graphswidget/graphsplace.h"
 #include "Actions/Axes/signaxesdialog.h"
 
@@ -13,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
   ui->setupUi(this);
   ui->testNum->setText("Здесь будут точки");
   connect(ui->newGraphs, &QPushButton::clicked, this, &MainWindow::AddGraphAction);
+
+  connect(ui->newGraphsErased, &QPushButton::clicked, this, &MainWindow::AddGraphErasedAction);
 
   connect(ui->axesOn, SIGNAL(stateChanged(int)),
           ui->graphPlace, SLOT(changeAxes(int)));
@@ -56,4 +59,11 @@ void MainWindow::AddGraphAction()
           ++i;
         }
     }
+}
+
+void MainWindow::AddGraphErasedAction()
+{
+  AddGraphDialogErased dialog(this);
+  if (dialog.exec() == QDialog::Accepted)
+    return;
 }

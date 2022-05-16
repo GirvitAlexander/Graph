@@ -17,6 +17,7 @@ public:
 
 public slots:
   void AddGraphAction();
+  void AddGraphErasedAction();
   void signAxesAction(bool);
 
 private:

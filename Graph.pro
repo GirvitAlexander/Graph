@@ -14,6 +14,7 @@ PRECOMPILED_HEADER  = pch.h
 
 SOURCES += \
     Actions/AddGraphs/addgraphdialog.cpp \
+    Actions/AddGraphs/addgraphdialogerased.cpp \
     Actions/Axes/signaxesdialog.cpp \
     GraphsWidget/graphsplace.cpp \
     main.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     Actions/AddGraphs/addgraphdialog.h \
+    Actions/AddGraphs/addgraphdialogerased.h \
     Actions/Axes/signaxesdialog.h \
     GraphsWidget/graphsplace.h \
     mainwindow/mainwindow.h \
@@ -28,6 +30,7 @@ HEADERS += \
 
 FORMS += \
     Actions/AddGraphs/addgraphdialog.ui \
+    Actions/AddGraphs/addgraphdialogerased.ui \
     Actions/Axes/signaxesdialog.ui \
     GraphsWidget/graphsplace.ui \
     mainwindow/mainwindow.ui
