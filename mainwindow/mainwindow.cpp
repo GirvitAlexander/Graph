@@ -1,5 +1,7 @@
 #include <pch.h>
 #include "Actions/AddGraphs/addgraphdialog.h"
+#include "graphswidget/graphsplace.h"
+#include "Actions/Axes/signaxesdialog.h"
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -11,11 +13,31 @@ MainWindow::MainWindow(QWidget *parent)
   ui->setupUi(this);
   ui->testNum->setText("Здесь будут точки");
   connect(ui->newGraphs, &QPushButton::clicked, this, &MainWindow::AddGraphAction);
+
+  connect(ui->axesOn, SIGNAL(stateChanged(int)),
+          ui->graphPlace, SLOT(changeAxes(int)));
+
+  connect(ui->gridOn, SIGNAL(stateChanged(int)),
+          ui->graphPlace, SLOT(changeGrid(int)));
+
+  connect(ui->signAxes, &QPushButton::clicked,
+          this, &MainWindow::signAxesAction);
 }
 
 MainWindow::~MainWindow()
 {
   delete ui;
+
+}
+
+void MainWindow::signAxesAction(bool checked)
+{
+  signAxesDialog dialog(this);
+  if (dialog.exec() == QDialog::Accepted)
+  {
+    ui->abs->setText(dialog.getAbs());
+    ui->ord->setText(dialog.getOrd());
+  }
 }
 
 void MainWindow::AddGraphAction()

@@ -18,7 +18,7 @@
     <item>
      <widget class="QSplitter" name="splitter">
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Box</enum>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -27,7 +27,7 @@
        <bool>true</bool>
       </property>
       <property name="childrenCollapsible">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <widget class="QFrame" name="frame">
        <property name="sizePolicy">
@@ -68,16 +68,25 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QCheckBox" name="checkBox">
+         <widget class="QCheckBox" name="axesOn">
           <property name="text">
            <string>Оси</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="tristate">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="checkBox_2">
+         <widget class="QCheckBox" name="gridOn">
           <property name="text">
            <string>Сетка</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -119,14 +128,55 @@
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="testNum">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="signAxes">
+            <property name="text">
+             <string>Подпись осей</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="abs">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QTextBrowser" name="textBrowser"/>
+         <widget class="QLabel" name="ord">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer name="verticalSpacer">
@@ -180,29 +230,36 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="graphPlace" native="true">
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>130</x>
-          <y>140</y>
-          <width>191</width>
-          <height>100</height>
-         </rect>
+      <widget class="QFrame" name="graphFrame">
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="leftMargin">
+         <number>2</number>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>100</height>
-         </size>
+        <property name="topMargin">
+         <number>2</number>
         </property>
-        <property name="text">
-         <string>Здесь должен быть график</string>
+        <property name="rightMargin">
+         <number>2</number>
         </property>
-        <property name="textFormat">
-         <enum>Qt::AutoText</enum>
+        <property name="bottomMargin">
+         <number>2</number>
         </property>
-       </widget>
+        <item>
+         <widget class="GraphsPlace" name="graphPlace" native="true"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -232,6 +289,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>GraphsPlace</class>
+   <extends>QWidget</extends>
+   <header>GraphsWidget\graphsplace.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

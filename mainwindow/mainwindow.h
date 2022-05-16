@@ -18,6 +18,9 @@ public:
 public slots:
   void AddGraphAction();
 
+public slots:
+    void signAxesAction(bool);
+
 private:
   Ui::MainWindow *ui;
 };
