@@ -2,6 +2,7 @@
 #include "ui_addgraphdialog.h"
 #include "pch.h"
 #include <iostream>
+#include <cstdlib>
 #include <ctime>
 
 AddGraphDialog::AddGraphDialog(QWidget *parent) :
@@ -33,12 +34,12 @@ QMap<float, float> AddGraphDialog::genMap()
   float a = 5.0;
 
   for (int i = 0; i < num; i++)
-    {
-      x = float(arc4random())/float((RAND_MAX)) * a;
-      y = float(arc4random())/float((RAND_MAX)) * a;
-      points.insert(x, y);
-      std::cout << "[" << i + 1 << "] " << x << ": " << y << std::endl;
-    }
+  {
+    x = float(rand()) / float((RAND_MAX)) * a;
+    y = float(rand()) / float((RAND_MAX)) * a;
+    points.insert(x, y);
+    std::cout << "[" << i + 1 << "] " << x << ": " << y << std::endl;
+  }
 
   return points;
 }
