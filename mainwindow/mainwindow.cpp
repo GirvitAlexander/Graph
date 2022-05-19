@@ -30,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
   delete ui;
-
 }
 
 void MainWindow::signAxesAction(bool checked)
