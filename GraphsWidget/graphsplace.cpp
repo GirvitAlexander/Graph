@@ -98,6 +98,36 @@ void GraphsPlace::drawGrid()
   paint.end();
 }
 
+void GraphsPlace::drawGraphs()
+{
+  updateCenter();
+  paint.begin(this);
+  paint.setRenderHint(QPainter::Antialiasing);
+  paint.setPen(QPen(Qt::green, 0.5, Qt::SolidLine));
+
+  for (int i = 0; i < graphs.size(); ++i)
+  {
+    auto point_1 = graphs[i].begin();
+    auto point_2 = std::next(point_1);
+
+    while (point_2 != graphs[i].end())
+    {
+       paint.drawLine(convertToScreeenX(point_1.key()), convertToScreeenY(point_1.value()),
+                      convertToScreeenX(point_2.key()), convertToScreeenY(point_2.value()));
+       ++point_1;
+       ++point_2;
+    }
+  }
+
+  paint.end();
+}
+
+void GraphsPlace::addGraph(const QMap<float, float> &map)
+{
+  graphs.push_back(map);
+  repaint();
+}
+
 void GraphsPlace::updateCenter()
 {
   x_0 = width() / 2;
@@ -111,6 +141,7 @@ void GraphsPlace::paintEvent(QPaintEvent *)
     drawGrid();
   if (axesOn)
     drawAxes();
+  drawGraphs();
 }
 
 void GraphsPlace::changeAxes(int check)
@@ -125,8 +156,12 @@ void GraphsPlace::changeGrid(int check)
   repaint();
 }
 
-float GraphsPlace::convertToScreeen(float y) {
+float GraphsPlace::convertToScreeenY(float y) {
   return y_0 - y * measure;
+}
+
+float GraphsPlace::convertToScreeenX(float x) {
+  return x_0 + x * measure;
 }
 
 

@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QVector>
+#include <QMap>
 
 namespace Ui {
   class GraphsPlace;
@@ -16,8 +18,12 @@ public:
   explicit GraphsPlace(QWidget *parent = nullptr);
   ~GraphsPlace();
 
+  void addGraph(const QMap<float, float> &map);
+
 private:
   Ui::GraphsPlace *ui;
+  QVector<QMap<float, float>> graphs;
+
   int x_0, y_0;  //center
   int measure;
   float scale;
@@ -27,8 +33,9 @@ private:
   void updateCenter();
   void drawAxes();
   void drawGrid();
-  float convertToScreeen(float y);
-
+  void drawGraphs();
+  float convertToScreeenY(float y);
+  float convertToScreeenX(float x);
 public slots:
   void changeAxes(int);
   void changeGrid(int);
