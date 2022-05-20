@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QToolTip>
 
 namespace Ui {
   class GraphsPlace;
@@ -24,6 +25,7 @@ private:
   QPainter paint;
 
   void updateCenter();
+  void mouseMoveEvent(QMouseEvent *);
   void drawAxes();
   void drawGrid();
 public slots:
@@ -32,5 +34,6 @@ public slots:
 protected:
   void paintEvent(QPaintEvent *);
 };
+
 
 #endif // GRAPHSPLACE_H

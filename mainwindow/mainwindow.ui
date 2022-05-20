@@ -186,6 +186,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="debug">
+          <property name="text">
+           <string>jopa</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QTextBrowser" name="textBrowser"/>
         </item>
         <item>
@@ -318,7 +325,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">

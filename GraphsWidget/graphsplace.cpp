@@ -1,5 +1,8 @@
 #include <pch.h>
 #include <QLabel>
+#include <QPoint>
+#include <QToolTip>
+#include <QMouseEvent>
 #include "graphsplace.h"
 #include "ui_graphsplace.h"
 
@@ -81,6 +84,17 @@ void GraphsPlace::updateCenter()
   y_0 = height() / 2;
 }
 
+void GraphsPlace::mouseMoveEvent(QMouseEvent* event)
+{
+    float mouseX = event->pos().x();
+    float mouseY = event->pos().y();
+    ui->debug->move(QPoint(mouseX+10, mouseY+10));
+    float x = -(width() / 2 - mouseX) / scale ;
+    float y = (height() / 2 - mouseY) / scale ;
+    QString label = "("+QString::number(x,'f', 2)+" ; "+QString::number(y, 'f', 2)+")";
+    ui->debug->setText(label);
+}
+
 void GraphsPlace::paintEvent(QPaintEvent *)
 {
   updateCenter();
@@ -101,6 +115,7 @@ void GraphsPlace::changeGrid(int check)
   gridOn = (check == Qt::Checked);
   repaint();
 }
+
 
 
 
