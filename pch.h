@@ -8,7 +8,6 @@
 #include <QValidator>
 #include <QIntValidator>
 #include <QRegularExpressionValidator>
-
 #include <QWidget>
 #include <QMap>
 
