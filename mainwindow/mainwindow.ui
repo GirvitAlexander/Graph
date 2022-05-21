@@ -67,14 +67,10 @@
         <number>2</number>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="7" column="0">
-         <widget class="QLabel" name="abs">
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
+        <item row="5" column="0">
+         <widget class="QComboBox" name="comboBox"/>
         </item>
-        <item row="12" column="0">
+        <item row="13" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <spacer name="horizontalSpacer_9">
@@ -111,6 +107,13 @@
           </item>
          </layout>
         </item>
+        <item row="10" column="0">
+         <widget class="QLabel" name="testNum">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QCheckBox" name="axesOn">
           <property name="text">
@@ -124,68 +127,17 @@
           </property>
          </widget>
         </item>
-        <item row="8" column="0">
+        <item row="9" column="0">
          <widget class="QLabel" name="ord">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Ордината</string>
           </property>
          </widget>
         </item>
-        <item row="11" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <spacer name="horizontalSpacer_8">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="newGraphs">
-            <property name="text">
-             <string>Новый случайный график</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
+        <item row="8" column="0">
          <widget class="QLabel" name="abs">
           <property name="text">
-           <string>Абсцисса: </string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="ord">
-          <property name="text">
-           <string>Ордината: </string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="0">
-         <widget class="QLabel" name="testNum">
-          <property name="text">
-           <string>TextLabel</string>
+           <string>Абсцисса:</string>
           </property>
          </widget>
         </item>
@@ -225,6 +177,13 @@
            </spacer>
           </item>
          </layout>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="htmlButton">
+          <property name="text">
+           <string>HTML-код</string>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QCheckBox" name="gridOn">
@@ -273,15 +232,45 @@
           </item>
          </layout>
         </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="htmlButton">
-          <property name="text">
-           <string>HTML-код</string>
-          </property>
-         </widget>
+        <item row="12" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="newGraphs">
+            <property name="text">
+             <string>Новый случайный график</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
-        <item row="5" column="0">
-         <widget class="QComboBox" name="comboBox"/>
+        <item row="11" column="0">
+         <widget class="QTextBrowser" name="textBrowser"/>
         </item>
        </layout>
       </widget>
@@ -326,7 +315,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">
