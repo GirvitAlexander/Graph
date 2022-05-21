@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include <pch.h>
 #include <QLabel>
 #include <QFontMetrics>
@@ -168,4 +166,3 @@ float GraphsPlace::convertToScreeenX(float x) {
 
 
 
->>>>>>> 3902294938ef0b5cb6f00ea200eb4ab5f7152aa2

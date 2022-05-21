@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #ifndef GRAPHSPLACE_H
 #define GRAPHSPLACE_H
 
@@ -46,4 +44,3 @@ protected:
 };
 
 #endif // GRAPHSPLACE_H
->>>>>>> 3902294938ef0b5cb6f00ea200eb4ab5f7152aa2
