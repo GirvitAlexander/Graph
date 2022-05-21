@@ -1,9 +1,9 @@
 #include <pch.h>
 #include "Actions/AddGraphs/addgraphdialog.h"
 #include "Actions/AddGraphs/addgraphdialogerased.h"
-#include "graphswidget/graphsplace.h"
+#include "GraphsWidget/graphsplace.h"
 #include "Actions/Axes/signaxesdialog.h"
-
+#include "html.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -12,10 +12,20 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+  ui->comboBox->addItem("Выберите цвет...", 0);
+  ui->comboBox->addItem("Синий", 1);
+  ui->comboBox->addItem("Красный", 2);
+  ui->comboBox->addItem("Зелёный", 3);
+  ui->comboBox->addItem("Жёлтый", 4);
+  ui->comboBox->addItem("Фиолетовый", 5);
+  ui->comboBox->addItem("Чёрный", 6);
   ui->testNum->setText("Здесь будут точки");
+
   connect(ui->newGraphs, &QPushButton::clicked, this, &MainWindow::AddGraphAction);
 
   connect(ui->newGraphsErased, &QPushButton::clicked, this, &MainWindow::AddGraphErasedAction);
+
+  connect(ui->htmlButton, &QPushButton::clicked, this, &MainWindow::AddHTMLAction);
 
   connect(ui->axesOn, SIGNAL(stateChanged(int)),
           ui->graphPlace, SLOT(changeAxes(int)));
@@ -67,3 +77,36 @@ void MainWindow::AddGraphErasedAction()
   if (dialog.exec() == QDialog::Accepted)
     ui->graphPlace->addGraph(dialog.getMap());
 }
+
+void MainWindow::AddHTMLAction()
+{
+  html dialog(this);
+  if (dialog.exec() == QDialog::Accepted)
+    return;
+}
+
+void MainWindow::on_comboBox_activated(int index)
+{
+  switch(index)
+    {
+      case 1:
+        code = "0000ff";
+        break;
+      case 2:
+        code = "ff0000";
+        break;
+      case 3:
+        code = "008000";
+        break;
+      case 4:
+        code = "ffff00";
+        break;
+      case 5:
+        code = "8b00ff";
+        break;
+      case 6:
+        code = "000000";
+        break;
+    }
+}
+

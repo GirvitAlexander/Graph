@@ -19,8 +19,13 @@ public slots:
   void AddGraphAction();
   void AddGraphErasedAction();
   void signAxesAction(bool);
+  void AddHTMLAction();
+
+private slots:
+  void on_comboBox_activated(int index);
 
 private:
   Ui::MainWindow *ui;
+  QString code;
 };
 #endif // MAINWINDOW_H
