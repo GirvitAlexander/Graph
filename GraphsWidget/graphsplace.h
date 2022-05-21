@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QPainter>
-#include <QToolTip>
 #include <QVector>
 #include <QMap>
 
@@ -32,7 +31,6 @@ private:
   QPainter paint;
 
   void updateCenter();
-  void mouseMoveEvent(QMouseEvent *);
   void drawAxes();
   void drawGrid();
   void drawGraphs();
@@ -44,6 +42,5 @@ public slots:
 protected:
   void paintEvent(QPaintEvent *);
 };
-
 
 #endif // GRAPHSPLACE_H
