@@ -1,6 +1,9 @@
 #include <pch.h>
 #include <QLabel>
 #include <QFontMetrics>
+#include <QPoint>
+#include <QToolTip>
+#include <QMouseEvent>
 #include "graphsplace.h"
 #include "ui_graphsplace.h"
 
@@ -28,6 +31,17 @@ void GraphsPlace::drawAxes()
   paint.drawLine(x_0, 0, x_0, height()); // x
   paint.drawLine(0, y_0, width(), y_0); // y
   paint.end();
+}
+
+void GraphsPlace::mouseMoveEvent(QMouseEvent* event)
+{
+  float mouseX = event->pos().x();
+  float mouseY = event->pos().y();
+  ui->debug->move(QPoint(mouseX+10, mouseY+10));
+  float x = -(x_0 - mouseX) / measure;
+  float y = (y_0 - mouseY) / measure;
+  QString label = "(" + QString::number(x,'f', 2) + " ; " + QString::number(y, 'f', 2) + ")";
+  ui->debug->setText(label);
 }
 
 void GraphsPlace::drawGrid()

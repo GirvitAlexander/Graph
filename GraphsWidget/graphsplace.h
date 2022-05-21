@@ -5,6 +5,8 @@
 #include <QPainter>
 #include <QVector>
 #include <QMap>
+#include <QPainter>
+#include <QToolTip>
 
 namespace Ui {
   class GraphsPlace;
@@ -34,6 +36,7 @@ private:
   void drawAxes();
   void drawGrid();
   void drawGraphs();
+  void mouseMoveEvent(QMouseEvent *);
   float convertToScreeenY(float y);
   float convertToScreeenX(float x);
 public slots:
