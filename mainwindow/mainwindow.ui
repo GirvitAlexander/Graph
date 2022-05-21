@@ -167,14 +167,14 @@
         <item>
          <widget class="QLabel" name="abs">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Абсцисса: </string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="ord">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Ордината: </string>
           </property>
          </widget>
         </item>

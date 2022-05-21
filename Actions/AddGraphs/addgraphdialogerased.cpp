@@ -20,7 +20,7 @@ AddGraphDialogErased::AddGraphDialogErased(QWidget *parent) :
 
 void AddGraphDialogErased::clicked()
 {
-  if ((ui->ForX->text().isEmpty()) and (ui->ForY->text().isEmpty()))
+  if ((ui->ForX->text().isEmpty()) || (ui->ForY->text().isEmpty()))
     return;
   float num, num2;
   num = ui->ForX->text().toFloat();

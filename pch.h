@@ -11,5 +11,6 @@
 
 #include <QWidget>
 #include <QMap>
+#include <QVector>
 
 #endif // PCH_H

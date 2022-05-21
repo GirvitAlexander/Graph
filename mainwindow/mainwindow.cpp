@@ -30,7 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
   delete ui;
-
 }
 
 void MainWindow::signAxesAction(bool checked)
@@ -38,8 +37,8 @@ void MainWindow::signAxesAction(bool checked)
   signAxesDialog dialog(this);
   if (dialog.exec() == QDialog::Accepted)
   {
-    ui->abs->setText(dialog.getAbs());
-    ui->ord->setText(dialog.getOrd());
+    ui->abs->setText(QStringLiteral("Абсцисса: ") + dialog.getAbs());
+    ui->ord->setText(QStringLiteral("Ордината: ") + dialog.getOrd());
   }
 }
 
@@ -48,22 +47,23 @@ void MainWindow::AddGraphAction()
   AddGraphDialog dialog(this);
   QString str;
   if (dialog.exec() == QDialog::Accepted)
+  {
+    ui->testNum->setText("Точек: " + QString::number(dialog.getNum()));
+    auto a = dialog.genMap();
+    auto i = a.begin();
+    while (i != a.end())
     {
-      ui->testNum->setText("Точек: " + QString::number(dialog.getNum()));
-      auto a = dialog.genMap();
-      auto i = a.begin();
-      while (i != a.end())
-        {
-          str = QString::number(i.key()) + ": " + QString::number(i.value()) + "\n";
-          ui->textBrowser->append(str);
-          ++i;
-        }
+      str = QString::number(i.key()) + ": " + QString::number(i.value()) + "\n";
+      ui->textBrowser->append(str);
+      ++i;
     }
+    ui->graphPlace->addGraph(a);
+  }
 }
 
 void MainWindow::AddGraphErasedAction()
 {
   AddGraphDialogErased dialog(this);
   if (dialog.exec() == QDialog::Accepted)
-    return;
+    ui->graphPlace->addGraph(dialog.getMap());
 }
