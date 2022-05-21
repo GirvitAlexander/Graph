@@ -70,7 +70,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="abs">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Абсцисса:</string>
           </property>
          </widget>
         </item>
@@ -127,7 +127,7 @@
         <item row="8" column="0">
          <widget class="QLabel" name="ord">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Ордината:</string>
           </property>
          </widget>
         </item>
@@ -167,20 +167,6 @@
            </spacer>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QLabel" name="abs">
-          <property name="text">
-           <string>Абсцисса: </string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="ord">
-          <property name="text">
-           <string>Ордината: </string>
-          </property>
-         </widget>
         </item>
         <item row="9" column="0">
          <widget class="QLabel" name="testNum">
@@ -283,6 +269,9 @@
         <item row="5" column="0">
          <widget class="QComboBox" name="comboBox"/>
         </item>
+        <item row="10" column="0">
+         <widget class="QTextBrowser" name="textBrowser"/>
+        </item>
        </layout>
       </widget>
       <widget class="QFrame" name="graphFrame">
@@ -326,7 +315,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">
