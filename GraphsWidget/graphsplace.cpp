@@ -4,6 +4,8 @@
 #include <QPoint>
 #include <QToolTip>
 #include <QMouseEvent>
+#include <QtMath>
+#include <cmath>
 #include "graphsplace.h"
 #include "ui_graphsplace.h"
 
@@ -38,8 +40,8 @@ void GraphsPlace::mouseMoveEvent(QMouseEvent* event)
   float mouseX = event->pos().x();
   float mouseY = event->pos().y();
   ui->debug->move(QPoint(mouseX+10, mouseY+10));
-  float x = -(x_0 - mouseX) / measure;
-  float y = (y_0 - mouseY) / measure;
+  float x = convertToGraphX(mouseX);
+  float y = convertToGraphY(mouseY);
   QString label = "(" + QString::number(x,'f', 2) + " ; " + QString::number(y, 'f', 2) + ")";
   ui->debug->setText(label);
 }
@@ -60,8 +62,8 @@ void GraphsPlace::drawGrid()
 
     if (i % 5 == 0)
     {
-      offset_x = fm.horizontalAdvance(QString("%1").arg(i * scale)) / 2;
-      paint.drawText(x_0 - i * measure - offset_x - offset_minus, y_0, QString("%1").arg(-i * scale));
+      offset_x = fm.horizontalAdvance(QString("%1").arg(i / scale)) / 2;
+      paint.drawText(x_0 - i * measure - offset_x - offset_minus, y_0, QString("%1").arg(-i / scale));
     }
 
     paint.drawLine(x_0 - i * measure, 0, x_0  - i * measure, height());
@@ -74,8 +76,8 @@ void GraphsPlace::drawGrid()
 
     if (i % 5 == 0)
     {
-      offset_x = fm.horizontalAdvance(QString("%1").arg(i * scale)) / 2;
-      paint.drawText(x_0 + i * measure - offset_x, y_0, QString("%1").arg(i * scale));
+      offset_x = fm.horizontalAdvance(QString("%1").arg(i / scale)) / 2;
+      paint.drawText(x_0 + i * measure - offset_x, y_0, QString("%1").arg(i / scale));
     }
 
     paint.drawLine(x_0 + i * measure, 0, x_0  + i * measure, height());
@@ -88,8 +90,8 @@ void GraphsPlace::drawGrid()
 
     if (i % 5 == 0 && i != 0)
     {
-      offset_x = fm.horizontalAdvance(QString("%1").arg(i * scale)) + 2;
-      paint.drawText(x_0 - offset_x, y_0 - i * measure + offset_y, QString("%1").arg(i * scale));
+      offset_x = fm.horizontalAdvance(QString("%1").arg(i / scale)) + 2;
+      paint.drawText(x_0 - offset_x, y_0 - i * measure + offset_y, QString("%1").arg(i / scale));
     }
 
     paint.drawLine(0, y_0  - i * measure, width(), y_0  - i * measure);
@@ -102,8 +104,8 @@ void GraphsPlace::drawGrid()
 
     if (i % 5 == 0)
     {
-      offset_x = fm.horizontalAdvance(QString("%1").arg(i * scale)) + 2;
-      paint.drawText(x_0 - offset_x - offset_minus, y_0 + i * measure  + offset_y, QString("%1").arg(-i * scale));
+      offset_x = fm.horizontalAdvance(QString("%1").arg(i / scale)) + 2;
+      paint.drawText(x_0 - offset_x - offset_minus, y_0 + i * measure  + offset_y, QString("%1").arg(-i / scale));
     }
 
     paint.drawLine(0, y_0  + i * measure, width(), y_0  + i * measure);
@@ -112,15 +114,26 @@ void GraphsPlace::drawGrid()
   paint.end();
 }
 
+void GraphsPlace::addGraph(const QMap<float, float> &map, QString col)
+{
+  colors.push_back(col);
+  graphs.push_back(map);
+  repaint();
+}
+
 void GraphsPlace::drawGraphs()
 {
+  //QColor color;
+  //color.setNamedColor("#0000ff");
   updateCenter();
-  paint.begin(this);
-  paint.setRenderHint(QPainter::Antialiasing);
-  paint.setPen(QPen(Qt::green, 0.5, Qt::SolidLine));
+
+  //auto c = colors.begin();
 
   for (int i = 0; i < graphs.size(); ++i)
   {
+    paint.begin(this);
+    paint.setRenderHint(QPainter::Antialiasing);
+    paint.setPen(QPen(colors[i], 1.5, Qt::SolidLine));
     auto point_1 = graphs[i].begin();
     auto point_2 = std::next(point_1);
 
@@ -131,15 +144,9 @@ void GraphsPlace::drawGraphs()
        ++point_1;
        ++point_2;
     }
+       paint.end();
   }
 
-  paint.end();
-}
-
-void GraphsPlace::addGraph(const QMap<float, float> &map)
-{
-  graphs.push_back(map);
-  repaint();
 }
 
 void GraphsPlace::updateCenter()
@@ -158,6 +165,58 @@ void GraphsPlace::paintEvent(QPaintEvent *)
   drawGraphs();
 }
 
+void GraphsPlace::resizeEvent(QResizeEvent *event)
+{
+  if (event->oldSize().width() == -1)
+    {
+      setSizeIncrement(event->size());
+      return;
+    }
+
+  if (event->oldSize() != event->size())
+    {
+      float count = width() / measure;
+      setSizeIncrement(event->size());
+      measure = 1 / count + measure;
+      qDebug() << count << " " << measure;
+
+      if (measure >= 40)
+        {
+          scale = scale * qPow(2, static_cast<int>(measure) / 20 - 1);
+          measure = 20 + static_cast<int>(measure) % 20;
+          qDebug() << "1";
+        }
+      if (measure < 20)
+        {
+          int power;
+          if (measure < 0)
+            {
+              power = 2 + static_cast<int>(-measure) / 20;
+              measure = 40 - static_cast<int>(-measure) % 20;
+            }
+          else
+            {
+              power = 1;
+              measure = 20 + roundf(measure);
+            }
+          scale = scale / qPow(2, power);
+          qDebug() << "2";
+        }
+
+      qDebug() << event->size().width() << " " << event->oldSize().width() << " " << measure << " " << scale;
+    }
+}
+
+float GraphsPlace::convertToGraphX(float x)
+{
+  return - (x_0 - x) / (measure * scale);
+}
+
+float GraphsPlace::convertToGraphY(float y)
+{
+  return (y_0 - y) / (measure * scale);
+}
+
 void GraphsPlace::changeAxes(int check)
 {
   axesOn = (check == Qt::Checked);
@@ -170,12 +229,14 @@ void GraphsPlace::changeGrid(int check)
   repaint();
 }
 
-float GraphsPlace::convertToScreeenY(float y) {
-  return y_0 - y * measure;
+float GraphsPlace::convertToScreeenY(float y)
+{
+  return y_0 - y * measure * scale;
 }
 
-float GraphsPlace::convertToScreeenX(float x) {
-  return x_0 + x * measure;
+float GraphsPlace::convertToScreeenX(float x)
+{
+  return x_0 + x * measure * scale;
 }
 
 

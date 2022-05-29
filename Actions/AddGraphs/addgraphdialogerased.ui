@@ -14,7 +14,27 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="19" column="12" colspan="4">
+    <widget class="QLineEdit" name="colorEdit"/>
+   </item>
+   <item row="17" column="15">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Ордината :</string>
+     </property>
+    </widget>
+   </item>
    <item row="19" column="17">
+    <widget class="QPushButton" name="addPoint">
+     <property name="text">
+      <string>Добавить точку</string>
+     </property>
+    </widget>
+   </item>
+   <item row="17" column="16">
+    <widget class="QLineEdit" name="ForY"/>
+   </item>
+   <item row="20" column="17">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -24,8 +44,11 @@
      </property>
     </widget>
    </item>
-   <item row="17" column="16">
-    <widget class="QLineEdit" name="ForY"/>
+   <item row="17" column="12">
+    <widget class="QLineEdit" name="ForX"/>
+   </item>
+   <item row="20" column="12" colspan="4">
+    <widget class="QComboBox" name="comboBox"/>
    </item>
    <item row="17" column="9">
     <widget class="QLabel" name="label">
@@ -34,20 +57,49 @@
      </property>
     </widget>
    </item>
-   <item row="17" column="15">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Ордината :</string>
+   <item row="18" column="12">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
-   <item row="17" column="12">
-    <widget class="QLineEdit" name="ForX"/>
+   <item row="21" column="12">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
-   <item row="18" column="17">
-    <widget class="QPushButton" name="addPoint">
+   <item row="0" column="12">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="19" column="10">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Добавить точку</string>
+      <string>#</string>
      </property>
     </widget>
    </item>

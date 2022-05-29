@@ -20,30 +20,35 @@ public:
   explicit GraphsPlace(QWidget *parent = nullptr);
   ~GraphsPlace();
 
-  void addGraph(const QMap<float, float> &map);
+  void addGraph(const QMap<float, float> &map, QString col);
 
 private:
   Ui::GraphsPlace *ui;
   QVector<QMap<float, float>> graphs;
+  QVector<QColor> colors;
 
   int x_0, y_0;  //center
-  int measure;
+  float measure;
   float scale;
   bool axesOn = true, gridOn = true;
   QPainter paint;
+  QColor color;
 
   void updateCenter();
   void drawAxes();
   void drawGrid();
   void drawGraphs();
   void mouseMoveEvent(QMouseEvent *);
-  float convertToScreeenY(float y);
-  float convertToScreeenX(float x);
+  float convertToScreeenY(float);
+  float convertToScreeenX(float);
+  float convertToGraphX(float);
+  float convertToGraphY(float);
 public slots:
   void changeAxes(int);
   void changeGrid(int);
 protected:
   void paintEvent(QPaintEvent *);
+  void resizeEvent(QResizeEvent *event);
 };
 
 #endif // GRAPHSPLACE_H

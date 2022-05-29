@@ -67,14 +67,47 @@
         <number>2</number>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
-        <item row="7" column="0">
-         <widget class="QLabel" name="abs">
-          <property name="text">
-           <string>Абсцисса:</string>
-          </property>
-         </widget>
+        <item row="2" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="listGraphs">
+            <property name="text">
+             <string>Список функций</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
-        <item row="12" column="0">
+        <item row="8" column="0">
+         <widget class="QTextBrowser" name="textBrowser"/>
+        </item>
+        <item row="10" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <spacer name="horizontalSpacer_9">
@@ -124,14 +157,21 @@
           </property>
          </widget>
         </item>
-        <item row="8" column="0">
+        <item row="6" column="0">
          <widget class="QLabel" name="ord">
           <property name="text">
            <string>Ордината:</string>
           </property>
          </widget>
         </item>
-        <item row="11" column="0">
+        <item row="5" column="0">
+         <widget class="QLabel" name="abs">
+          <property name="text">
+           <string>Абсцисса:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <spacer name="horizontalSpacer_8">
@@ -168,7 +208,7 @@
           </item>
          </layout>
         </item>
-        <item row="9" column="0">
+        <item row="7" column="0">
          <widget class="QLabel" name="testNum">
           <property name="text">
            <string>TextLabel</string>
@@ -222,56 +262,6 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="listGraphs">
-            <property name="text">
-             <string>Список функций</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="htmlButton">
-          <property name="text">
-           <string>HTML-код</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QComboBox" name="comboBox"/>
-        </item>
-        <item row="10" column="0">
-         <widget class="QTextBrowser" name="textBrowser"/>
-        </item>
        </layout>
       </widget>
       <widget class="QFrame" name="graphFrame">
@@ -315,7 +305,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuInfo">
