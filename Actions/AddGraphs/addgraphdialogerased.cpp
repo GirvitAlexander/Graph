@@ -84,6 +84,17 @@ void AddGraphDialogErased::changed(int index)
     }
 }
 
+void AddGraphDialogErased::accept()
+{
+  if (ui->colorEdit->text().isEmpty() && code.isEmpty())
+    return;
+
+  if (code.isEmpty())
+    code = ui->colorEdit->text();
+
+  QDialog::accept();
+}
+
 void AddGraphDialogErased::clicked()
 {
   if ((ui->ForX->text().isEmpty()) || (ui->ForY->text().isEmpty()))
@@ -100,7 +111,6 @@ void AddGraphDialogErased::clicked()
 
   ui->ForX->clear();
   ui->ForY->clear();
-
 }
 
 QMap<float, float> AddGraphDialogErased::getMap()

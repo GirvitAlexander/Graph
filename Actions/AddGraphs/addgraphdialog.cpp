@@ -50,11 +50,13 @@ void AddGraphDialog::blockLine(int t)
 
 void AddGraphDialog::accept()
 {
-  if (ui->numEdit->text().isEmpty() && (ui->colorEdit->text().isEmpty() || code.isEmpty()))
+  if (ui->numEdit->text().isEmpty() || (ui->colorEdit->text().isEmpty() && code.isEmpty()))
     return;
   num = ui->numEdit->text().toInt();
+
   if (code.isEmpty())
     code = ui->colorEdit->text();
+
   QDialog::accept();
 }
 

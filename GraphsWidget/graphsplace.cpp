@@ -218,13 +218,11 @@ void GraphsPlace::resizeEvent(QResizeEvent *event)
       float count = event->oldSize().width() / measure;
       setSizeIncrement(event->size());
       measure = (event->size() - event->oldSize()).width() / count + measure;
-      qDebug() << count << " " << measure;
 
       if (measure >= 40)
         {
           scale = scale * qPow(2, static_cast<int>(measure) / 20 - 1);
           measure = 20 + static_cast<int>(measure) % 20;
-          qDebug() << "1";
         }
       if (measure < 20)
         {
@@ -240,7 +238,6 @@ void GraphsPlace::resizeEvent(QResizeEvent *event)
               measure = 20 + roundf(measure);
             }
           scale = scale / qPow(2, power);
-          qDebug() << "2";
         }
 
       qDebug() << event->size().width() << " " << event->oldSize().width() << " " << measure << " " << scale;

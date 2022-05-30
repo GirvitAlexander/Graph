@@ -31,6 +31,7 @@ private:
 
 protected:
   void clicked();
+  void accept();
 };
 
 #endif // ADDGRAPHDIALOGERASED_H

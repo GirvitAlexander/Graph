@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-  //ui->testNum->setText("Точек: ?");
+
   ui->textBrowser->setPlaceholderText("Введите точки, и они появятся здесь...");
 
   connect(ui->newGraphs, &QPushButton::clicked, this, &MainWindow::AddGraphAction);
@@ -52,9 +52,12 @@ void MainWindow::AddGraphAction()
 
   if (dialog.exec() == QDialog::Accepted)
   {
+    if (dialog.getNum() == 0)
+      return;
     ui->testNum->setText("Точек: " + QString::number(dialog.getNum()));
     auto a = dialog.genMap();
     auto i = a.begin();
+    ui->textBrowser->clear();
     while (i != a.end())
     {
       str = QString::number(i.key()) + ": " + QString::number(i.value()) + "\n";
@@ -62,7 +65,6 @@ void MainWindow::AddGraphAction()
       ++i;
     }
     color.append(dialog.getColor());
-    qDebug() << color;
     ui->graphPlace->addGraph(a, color);
   }
 }
@@ -70,11 +72,26 @@ void MainWindow::AddGraphAction()
 void MainWindow::AddGraphErasedAction()
 {
   QString color = "#";
+  QString str;
   AddGraphDialogErased dialog(this);
+
   if (dialog.exec() == QDialog::Accepted)
     {
+      auto map = dialog.getMap();
+      if (map.size() == 0) {
+        return;
+      }
+      ui->testNum->setText("Точек: " + QString::number(map.size()));
+      auto i = map.begin();
+      ui->textBrowser->clear();
+      while (i != map.end())
+      {
+        str = QString::number(i.key()) + ": " + QString::number(i.value()) + "\n";
+        ui->textBrowser->append(str);
+        ++i;
+      }
+
       color.append(dialog.getColor());
-      qDebug() << color;
-      ui->graphPlace->addGraph(dialog.getMap(), color);
+      ui->graphPlace->addGraph(map, color);
     }
 }
