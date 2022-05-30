@@ -23,7 +23,65 @@ AddGraphDialogErased::AddGraphDialogErased(QWidget *parent) :
   ui->ForX->setValidator(&val1);
   ui->ForY->setValidator(&val2);
   ui->colorEdit->setValidator(&val3);
-  connect(ui->addPoint, &QPushButton::clicked, this, &AddGraphDialogErased::clicked);
+  ui->colorEdit->setPlaceholderText("Введите HEX-код...");
+
+  connect(ui->colorEdit, &QLineEdit::textChanged,
+          this, &AddGraphDialogErased::blockBox);
+
+  connect(ui->comboBox, &QComboBox::currentIndexChanged,
+          this, &AddGraphDialogErased::blockLine);
+
+  connect(ui->comboBox, &QComboBox::currentIndexChanged,
+          this, &AddGraphDialogErased::changed);
+
+  connect(ui->addPoint, &QPushButton::clicked,
+          this, &AddGraphDialogErased::clicked);
+}
+
+void AddGraphDialogErased::blockBox(const QString &t)
+{
+  if (!t.isEmpty())
+    ui->comboBox->setDisabled(true);
+  else
+    ui->comboBox->setDisabled(false);
+}
+
+void AddGraphDialogErased::blockLine(int t)
+{
+  if (t != 0)
+    ui->colorEdit->setDisabled(true);
+  else
+    ui->colorEdit->setDisabled(false);
+}
+
+void AddGraphDialogErased::changed(int index)
+{
+    qDebug() << "index: " << index;
+
+  switch(index)
+    {
+      case 0:
+        code.clear();
+        break;
+      case 1:
+        code = "0000ff";
+        break;
+      case 2:
+        code = "ff0000";
+        break;
+      case 3:
+        code = "008000";
+        break;
+      case 4:
+        code = "ffff00";
+        break;
+      case 5:
+        code = "8b00ff";
+        break;
+      case 6:
+        code = "000000";
+        break;
+    }
 }
 
 void AddGraphDialogErased::clicked()
@@ -33,7 +91,8 @@ void AddGraphDialogErased::clicked()
   float num, num2;
   num = ui->ForX->text().toFloat();
   num2 = ui->ForY->text().toFloat();
-  code = ui->colorEdit->text();
+  if (code.isEmpty())
+    code = ui->colorEdit->text();
 
   map.insert(num, num2);
 

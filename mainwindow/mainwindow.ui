@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Построение графиков v1.0</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -68,41 +68,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="2" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="listGraphs">
-            <property name="text">
-             <string>Список функций</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
+         <layout class="QHBoxLayout" name="horizontalLayout_2"/>
         </item>
         <item row="8" column="0">
          <widget class="QTextBrowser" name="textBrowser"/>
@@ -160,14 +126,14 @@
         <item row="6" column="0">
          <widget class="QLabel" name="ord">
           <property name="text">
-           <string>Ордината:</string>
+           <string>Ордината: ?</string>
           </property>
          </widget>
         </item>
         <item row="5" column="0">
          <widget class="QLabel" name="abs">
           <property name="text">
-           <string>Абсцисса:</string>
+           <string>Абсцисса: ?</string>
           </property>
          </widget>
         </item>
@@ -211,7 +177,7 @@
         <item row="7" column="0">
          <widget class="QLabel" name="testNum">
           <property name="text">
-           <string>TextLabel</string>
+           <string>Кол-во точек: ?</string>
           </property>
          </widget>
         </item>

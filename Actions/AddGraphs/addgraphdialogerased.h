@@ -18,6 +18,9 @@ public:
   ~AddGraphDialogErased();
   QMap<float, float> getMap();
   QString getColor();
+  void changed(int index);
+  void blockBox(const QString &t);
+  void blockLine(int t);
 
 private:
   Ui::AddGraphDialogErased *ui;
