@@ -15,15 +15,10 @@ float PI = 3.14159265359;
 
 QPointF getClosestPoint (QPointF mouseXY, QPointF P1, QPointF P2)
 {
-    float slope = (P1.y() - P2.y()) / (P1.x()-P2.x()); // 1
-    float b = P1.y() - slope * P1.x(); // 0
-
-    //float counterSlope = tan(atan(slope) + PI / 2); // -1
-
-    //float mouseB = mouseXY.y() - counterSlope * mouseXY.x(); // 4.7 + 1*5.95 = 10.65
-    float intersectionX = mouseXY.x();//(mouseB - b) / (slope - counterSlope); // 10.65 / 2 = 5.325
-    float intersectionY = slope * intersectionX + b; // 5.325
-
+    float slope = (P1.y() - P2.y()) / (P1.x()-P2.x());
+    float b = P1.y() - slope * P1.x();
+    float intersectionX = std::min(std::max(mouseXY.x(), P1.x()), P2.x());
+    float intersectionY = slope * intersectionX + b;
 
     return QPointF(intersectionX, intersectionY);
 }
@@ -73,11 +68,15 @@ void GraphsPlace::mouseMoveEvent(QMouseEvent* event)
           point2 = std::next(point2);
       }
 
+
       QPointF closestPoint = getClosestPoint(
                   QPointF(x,y),
                   QPointF(point1.key(), point1.value()),
                   QPointF(point2.key(), point2.value())
                   );
+
+
+
       QString label2 = "("+QString::number(closestPoint.x(),'f', 2)+":"+QString::number(closestPoint.y(),'f', 2)+")";
        ui->xy->setText(label2);
        ui->pointer->move(QPoint(convertToScreeenX(closestPoint.x())-1, convertToScreeenY(closestPoint.y())-1));
