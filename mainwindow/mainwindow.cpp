@@ -41,6 +41,7 @@ void MainWindow::signAxesAction(bool checked)
   {
     ui->abs->setText(QStringLiteral("Абсцисса: ") + dialog.getAbs());
     ui->ord->setText(QStringLiteral("Ордината: ") + dialog.getOrd());
+    ui->graphPlace->addAxesName(dialog.getAbs(), dialog.getOrd());
   }
 }
 
