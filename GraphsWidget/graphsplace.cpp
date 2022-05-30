@@ -2,12 +2,32 @@
 #include <QLabel>
 #include <QFontMetrics>
 #include <QPoint>
+#include <QDebug>
 #include <QToolTip>
 #include <QMouseEvent>
 #include <QtMath>
 #include <cmath>
 #include "graphsplace.h"
 #include "ui_graphsplace.h"
+#include <math.h>
+
+float PI = 3.14159265359;
+
+QPointF getClosestPoint (QPointF mouseXY, QPointF P1, QPointF P2)
+{
+    float slope = (P1.y() - P2.y()) / (P1.x()-P2.x()); // 1
+    float b = P1.y() - slope * P1.x(); // 0
+
+    //float counterSlope = tan(atan(slope) + PI / 2); // -1
+
+    //float mouseB = mouseXY.y() - counterSlope * mouseXY.x(); // 4.7 + 1*5.95 = 10.65
+    float intersectionX = mouseXY.x();//(mouseB - b) / (slope - counterSlope); // 10.65 / 2 = 5.325
+    float intersectionY = slope * intersectionX + b; // 5.325
+
+
+    return QPointF(intersectionX, intersectionY);
+}
+
 
 GraphsPlace::GraphsPlace(QWidget *parent) :
   QWidget(parent),
@@ -39,11 +59,31 @@ void GraphsPlace::mouseMoveEvent(QMouseEvent* event)
 {
   float mouseX = event->pos().x();
   float mouseY = event->pos().y();
-  ui->debug->move(QPoint(mouseX+10, mouseY+10));
-  float x = convertToGraphX(mouseX);
-  float y = convertToGraphY(mouseY);
-  QString label = "(" + QString::number(x,'f', 2) + " ; " + QString::number(y, 'f', 2) + ")";
-  ui->debug->setText(label);
+  float x = -(x_0 - mouseX) / measure;
+  float y = (y_0 - mouseY) / measure;
+
+  if (graphs.length() > 0) {
+      QMap closestPlot = graphs[0];
+
+      auto point1 = closestPlot.begin();
+      auto point2 = std::next(point1);
+
+      while (point2.key() <= x && std::next(point2) != closestPlot.end()) {
+          point1 = point2;
+          point2 = std::next(point2);
+      }
+
+      QPointF closestPoint = getClosestPoint(
+                  QPointF(x,y),
+                  QPointF(point1.key(), point1.value()),
+                  QPointF(point2.key(), point2.value())
+                  );
+      QString label2 = "("+QString::number(closestPoint.x(),'f', 2)+":"+QString::number(closestPoint.y(),'f', 2)+")";
+       ui->xy->setText(label2);
+       ui->pointer->move(QPoint(convertToScreeenX(closestPoint.x())-1, convertToScreeenY(closestPoint.y())-1));
+       ui->xy->move(QPoint(convertToScreeenX(closestPoint.x())+4, convertToScreeenY(closestPoint.y())+4));
+  }
+
 }
 
 void GraphsPlace::drawGrid()

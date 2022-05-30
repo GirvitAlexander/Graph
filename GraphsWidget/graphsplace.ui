@@ -25,23 +25,38 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="debug">
+  <widget class="QLabel" name="xy">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>91</width>
+     <x>10</x>
+     <y>280</y>
+     <width>131</width>
      <height>16</height>
     </rect>
    </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="textFormat">
-    <enum>Qt::PlainText</enum>
+  </widget>
+  <widget class="QLabel" name="pointer">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>90</y>
+     <width>3</width>
+     <height>3</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Panel</enum>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>
