@@ -17,7 +17,6 @@ SOURCES += \
     Actions/AddGraphs/addgraphdialogerased.cpp \
     Actions/Axes/signaxesdialog.cpp \
     GraphsWidget/graphsplace.cpp \
-    html.cpp \
     main.cpp \
     mainwindow/mainwindow.cpp
 
@@ -26,7 +25,6 @@ HEADERS += \
     Actions/AddGraphs/addgraphdialogerased.h \
     Actions/Axes/signaxesdialog.h \
     GraphsWidget/graphsplace.h \
-    html.h \
     mainwindow/mainwindow.h \
     pch.h
 
@@ -35,7 +33,6 @@ FORMS += \
     Actions/AddGraphs/addgraphdialogerased.ui \
     Actions/Axes/signaxesdialog.ui \
     GraphsWidget/graphsplace.ui \
-    html.ui \
     mainwindow/mainwindow.ui
 
 # Default rules for deployment.

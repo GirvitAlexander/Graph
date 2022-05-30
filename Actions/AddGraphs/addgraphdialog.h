@@ -19,11 +19,17 @@ public:
   QMap<float, float> genMap();
   QString getKey();
   QString getValue();
+  QString getColor();
+  void changed(int index);
+  void blockBox(const QString &t);
+  void blockLine(int t);
 
 private:
   Ui::AddGraphDialog *ui;
   int num;
-  QIntValidator val;
+  QIntValidator val1;
+  QRegularExpressionValidator val2;
+  QString code;
 
 protected:
   void accept();
