@@ -12,7 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-  ui->testNum->setText("Здесь будут точки");
+  //ui->testNum->setText("Точек: ?");
+  ui->textBrowser->setPlaceholderText("Введите точки, и они появятся здесь...");
 
   connect(ui->newGraphs, &QPushButton::clicked, this, &MainWindow::AddGraphAction);
 
@@ -49,7 +50,6 @@ void MainWindow::AddGraphAction()
   QString str;
   QString color = "#";
 
-
   if (dialog.exec() == QDialog::Accepted)
   {
     ui->testNum->setText("Точек: " + QString::number(dialog.getNum()));
@@ -78,4 +78,3 @@ void MainWindow::AddGraphErasedAction()
       ui->graphPlace->addGraph(dialog.getMap(), color);
     }
 }
-

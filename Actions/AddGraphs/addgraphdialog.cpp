@@ -20,6 +20,7 @@ AddGraphDialog::AddGraphDialog(QWidget *parent) :
   ui->comboBox->addItem("Чёрный", 6);
   ui->numEdit->setValidator(&val1);
   ui->colorEdit->setValidator(&val2);
+  ui->colorEdit->setPlaceholderText("Введите HEX-код...");
 
   connect(ui->colorEdit, &QLineEdit::textChanged,
           this, &AddGraphDialog::blockBox);
@@ -102,12 +103,17 @@ QMap<float, float> AddGraphDialog::genMap()
   QMap<float, float> points;
   srand((unsigned int)time(NULL));
   float x, y;
-  float a = 10.0;
+  float a = 12.0;
+  int signX, signY;
 
   for (int i = 0; i < num; i++)
   {
-    x = float(rand()) / float(RAND_MAX) * a;
-    y = float(rand()) / float(RAND_MAX) * a;
+    signX = rand() % 2; signY = rand() % 2;
+    signX = signX == 0 ? -1 : 1;
+    signY = signY == 0 ? -1 : 1;
+
+    x = float(rand()) / float(RAND_MAX) * a * signX;
+    y = float(rand()) / float(RAND_MAX) * a * signY;
     points.insert(x, y);
     std::cout << "[" << i + 1 << "] " << x << ": " << y << std::endl;
   }

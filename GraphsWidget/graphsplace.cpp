@@ -175,9 +175,9 @@ void GraphsPlace::resizeEvent(QResizeEvent *event)
 
   if (event->oldSize() != event->size())
     {
-      float count = width() / measure;
+      float count = event->oldSize().width() / measure;
       setSizeIncrement(event->size());
-      measure = 1 / count + measure;
+      measure = (event->size() - event->oldSize()).width() / count + measure;
       qDebug() << count << " " << measure;
 
       if (measure >= 40)
