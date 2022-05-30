@@ -31,12 +31,12 @@ QMap<float, float> AddGraphDialog::genMap()
   QMap<float, float> points;
   srand((unsigned int)time(NULL));
   float x, y;
-  float a = 5.0;
+  float a = 20.0;
 
   for (int i = 0; i < num; i++)
   {
-    x = float(rand()) / float((RAND_MAX)) * a;
-    y = float(rand()) / float((RAND_MAX)) * a;
+    x = float(rand()) / float((RAND_MAX)) * a - 10;
+    y = float(rand()) / float((RAND_MAX)) * a - 10;
     points.insert(x, y);
     std::cout << "[" << i + 1 << "] " << x << ": " << y << std::endl;
   }
