@@ -46,8 +46,8 @@
   <widget class="QLabel" name="pointer">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>90</y>
+     <x>390</x>
+     <y>-660</y>
      <width>3</width>
      <height>3</height>
     </rect>
@@ -59,14 +59,19 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="abs">
+  <widget class="QLabel" name="debug">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>10</y>
-     <width>37</width>
-     <height>12</height>
+     <x>70</x>
+     <y>250</y>
+     <width>81</width>
+     <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -75,23 +80,24 @@
   <widget class="QLabel" name="ord">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>130</y>
-     <width>37</width>
-     <height>12</height>
+     <x>190</x>
+     <y>230</y>
+     <width>58</width>
+     <height>16</height>
     </rect>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
+   <property name="text">
+    <string/>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>0</width>
-     <height>0</height>
-    </size>
+  </widget>
+  <widget class="QLabel" name="abs">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>230</y>
+     <width>58</width>
+     <height>16</height>
+    </rect>
    </property>
    <property name="text">
     <string/>

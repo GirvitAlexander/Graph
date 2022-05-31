@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
+    <width>453</width>
     <height>174</height>
    </rect>
   </property>
@@ -72,6 +72,9 @@
  <tabstops>
   <tabstop>ForX</tabstop>
   <tabstop>ForY</tabstop>
+  <tabstop>colorEdit</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>addPoint</tabstop>
  </tabstops>
  <resources/>
  <connections>
