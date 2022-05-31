@@ -21,6 +21,7 @@ public:
   ~GraphsPlace();
 
   void addGraph(const QMap<float, float> &map, QString col);
+  void addAxesName(const QString &abs, const QString &ord);
 
 private:
   Ui::GraphsPlace *ui;

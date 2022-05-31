@@ -77,10 +77,10 @@ void GraphsPlace::mouseMoveEvent(QMouseEvent* event)
 
 
 
-      QString label2 = "("+QString::number(closestPoint.x(),'f', 2)+":"+QString::number(closestPoint.y(),'f', 2)+")";
+      QString label2 = "(" + QString::number(closestPoint.x(),'f', 2)+":"+QString::number(closestPoint.y(),'f', 2)+")";
        ui->xy->setText(label2);
-       ui->pointer->move(QPoint(convertToScreeenX(closestPoint.x())-1, convertToScreeenY(closestPoint.y())-1));
-       ui->xy->move(QPoint(convertToScreeenX(closestPoint.x())+4, convertToScreeenY(closestPoint.y())+4));
+       ui->pointer->move(QPoint(convertToScreeenX(closestPoint.x()) - 1, convertToScreeenY(closestPoint.y()) - 1));
+       ui->xy->move(QPoint(convertToScreeenX(closestPoint.x()) + 4, convertToScreeenY(closestPoint.y()) + 4));
   }
 
 }
@@ -197,11 +197,21 @@ void GraphsPlace::updateCenter()
 void GraphsPlace::paintEvent(QPaintEvent *)
 {
   updateCenter();
+  ui->ord->move(x_0, 0);
+  ui->abs->move(width() - ui->abs->fontMetrics().boundingRect(ui->abs->text()).width(), y_0);
   if (gridOn)
     drawGrid();
   if (axesOn)
     drawAxes();
   drawGraphs();
+}
+
+void GraphsPlace::addAxesName(const QString &abs, const QString &ord)
+{
+  ui->ord->setText(ord);
+  ui->ord->resize(ui->ord->fontMetrics().boundingRect(ui->ord->text()).width(), ui->ord->height());
+  ui->abs->setText(abs);
+  ui->abs->resize(ui->abs->fontMetrics().boundingRect(ui->abs->text()).width(), ui->abs->height());
 }
 
 void GraphsPlace::resizeEvent(QResizeEvent *event)
